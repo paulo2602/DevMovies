@@ -14,8 +14,15 @@ import { getImages } from '../../utils/getImages'
 function Home() {
     const [movie, setMovie] = useState()
     const [topMovies, setTopMovies] = useState()
+    const [topSeries, setTopSeries] = useState()
+    const [topPopular, setTopPopular] = useState()
+    const [topPeople, setTopPeople] = useState()
+
+
+
 
     useEffect(() => {
+
         async function getMovies() {
             const { data:
                 { results }
@@ -32,10 +39,44 @@ function Home() {
 
             console.log(results)
             setTopMovies(results)
+
+        }
+
+
+        async function getTopSeries() {
+            const { data:
+                { results }
+            } = await api.get('/tv/top_rated')
+
+            console.log(results)
+            setTopSeries(results)
+        }
+
+
+        async function getTopPopular() {
+            const { data:
+                { results }
+            } = await api.get('/tv/popular')
+
+            console.log(results)
+            setTopPopular(results)
+        }
+
+
+        async function getTopPeople() {
+            const { data:
+                { results }
+            } = await api.get('/person/popular')
+
+            console.log(results)
+            setTopPeople(results)
         }
 
         getMovies()
         getTopMovies()
+        getTopSeries()
+        getTopPopular()
+        getTopPeople()
 
     }, [])
 
@@ -60,8 +101,10 @@ function Home() {
                     </Container>
                 </Background>
             )}
-          {topMovies && <Slider info={topMovies} title={'Top Filmes'} />}   {/*carregar somente quando tiver alguma coisa */}
-          
+            {topMovies && <Slider info={topMovies} title={'Top Filmes'} />}   {/*carregar somente quando tiver alguma coisa */}
+            {topSeries && <Slider info={topSeries} title={'Top Series'} />}
+            {topPopular && <Slider info={topPopular} title={'Top Popular'} />}
+            {topPeople && <Slider info={topPeople} title={'Top People Popular'} />}
         </>
     )
 

@@ -1,5 +1,6 @@
 import { Container } from "../../components/Slider/styles"
 import { Swiper, SwiperSlide } from "swiper/react"
+import Card from "../Card"
 
 function Slider({ info, title }) {
     console.log(info, title)
@@ -14,9 +15,7 @@ function Slider({ info, title }) {
             >
                 {info.map((item, index) => (
                     <SwiperSlide key={index}> {/* coloquei o index como uma chave unica porque ele vai mostrar a posicao que eu to, posicao 1, 2 ,3 e etc.. entao é unica. */}
-                        <div style={{color: "white"}}>
-                        {item.original_title}
-                        </div> 
+                        <Card item={item}/> {/* esse item é os dados que esto indo lá pra minha variavel*/}
                     </SwiperSlide>
                 ))}
 
