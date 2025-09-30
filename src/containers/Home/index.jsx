@@ -28,7 +28,7 @@ function Home() {
                 { results }
             } = await api.get('/movie/popular')
 
-            setMovie(results[10])
+            setMovie(results[1])
 
         }
 
@@ -43,6 +43,9 @@ function Home() {
         }
 
 
+
+
+
         async function getTopSeries() {
             const { data:
                 { results }
@@ -51,6 +54,10 @@ function Home() {
             console.log(results)
             setTopSeries(results)
         }
+
+
+
+
 
 
         async function getTopPopular() {
@@ -94,7 +101,6 @@ function Home() {
                                 <Button >Assista o Trailer </Button>
                             </ContainerButtons>
                         </Info>
-
                         <Poster>
                             <img alt='capa-do-filme' src={getImages(movie.poster_path)} />
                         </Poster>
